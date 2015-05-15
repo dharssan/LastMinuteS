@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:id="@+id/LastMinuteSports"
+    android:background="#FFFFFF">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/coyotes"
+        android:src="@drawable/faded_coyotes"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ducks"
+        android:src="@drawable/ducks_fade"
+        android:layout_alignTop="@+id/coyotes"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bruins"
+        android:layout_alignTop="@+id/coyotes"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/boston_faded" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sabres"
+        android:layout_below="@+id/coyotes"
+        android:layout_toStartOf="@+id/coyotes"
+        android:layout_alignRight="@+id/ducks"
+        android:layout_alignEnd="@+id/ducks"
+        android:src="@drawable/sabres_faded"
+        android:contentDescription="sabres" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/flames"
+        android:src="@drawable/flames_copy"
+        android:layout_below="@+id/coyotes"
+        android:layout_alignLeft="@+id/coyotes"
+        android:layout_alignStart="@+id/coyotes" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hurricanes"
+        android:layout_alignBottom="@+id/flames"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/hurricanes_faded" />
+
+</RelativeLayout>
