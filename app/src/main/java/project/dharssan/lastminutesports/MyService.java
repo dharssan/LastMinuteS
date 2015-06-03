@@ -100,8 +100,8 @@ public class MyService extends Service{
 
     @Override
     public void onCreate(){
-        Toast.makeText(this, "My Service Created for Team", Toast.LENGTH_LONG).show();
-        Log.i(TAG, "onCreated");
+     //   Toast.makeText(this, "My Service Created for Team", Toast.LENGTH_LONG).show();
+        //Log.i(TAG, "onCreated");
 
     }
     @Override
@@ -134,7 +134,7 @@ public class MyService extends Service{
                 e.printStackTrace();
             }
 
-            Log.i(TAG, "tester");
+            //Log.i(TAG, "tester");
 
         }*/
         new Description().execute();
@@ -145,7 +145,7 @@ public class MyService extends Service{
     @Override
     public void onDestroy(){
         super.onDestroy();
-        Log.i(TAG, "Destroy");
+        //Log.i(TAG, "Destroy");
         stoppage = false;
         stopForeground(true);
 
@@ -200,13 +200,13 @@ public class MyService extends Service{
                         Elements description = document
                                 .select("body");
                         desc = description.text();
-                        Log.i(TAG, "test2");
+                        //Log.i(TAG, "test2");
                         //Log.i(desc, "Test");
                         //Log.i(String.valueOf(stoppage),"test2");
 
                         for (int j = 0; j < MainActivity.on_teams.size(); j++) {
-                            if (desc.matches(".*" + MainActivity.on_teams.get(j) + ".*?\\(END.*1ST\\).*")) {
-                                Log.i(TAG, " 1st Match");
+                            if (desc.matches(".*" + MainActivity.on_teams.get(j) + ".*?\\(6:.*3RD\\).*")) {
+                               // Log.i(TAG, " 1st Match");
 
 
                                 final Intent emptyIntent = new Intent();
@@ -386,6 +386,10 @@ public class MyService extends Service{
 
     private void buildNotif(String teamName, int num){
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (teamName.contains("%20"))
+        {
+            teamName = teamName.replace("%20"," ");
+        }
         NotificationCompat.Builder nhl = new NotificationCompat.Builder(
                 getApplicationContext())
                 .setSmallIcon(R.drawable.nhl)

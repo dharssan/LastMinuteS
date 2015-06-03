@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import java.io.IOException;
@@ -21,8 +23,14 @@ import android.support.v4.app.NotificationCompat;
 import android.app.Notification;
 import android.app.Notification.Builder;
 import android.app.NotificationManager;
-public class MainActivity extends Activity implements View.OnClickListener{
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.preference.DialogPreference;
+import android.util.AttributeSet;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private boolean firstTime = true;
     private ImageButton ducks;
     private ImageButton coyotes;
     private ImageButton bruins;
@@ -94,8 +102,26 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences shared = getSharedPreferences("mydata", Context.MODE_PRIVATE );
+        SharedPreferences.Editor editor = shared.edit();
 
 
+
+
+
+        if(shared.getBoolean("firstTime",true)){
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    MainActivity.this);
+            alertDialogBuilder.setTitle("Welcome to Last Minute Sports");
+            alertDialogBuilder.setMessage("Tap on your favourite teams to get warnings when 5 minutes are left in the game. Make sure to keep the app running in the background when you want to receive Alerts");
+            alertDialogBuilder.setPositiveButton("OK", null);
+            alertDialogBuilder.show();
+
+            firstTime = false;
+            editor.putBoolean("firstTime",firstTime);
+            editor.commit();
+        }
 
         ducks = (ImageButton) findViewById(R.id.ducks);
         coyotes = (ImageButton) findViewById(R.id.coyotes);
@@ -160,7 +186,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         jets.setOnClickListener(this);
         capitals.setOnClickListener(this);
 
-        SharedPreferences shared = getSharedPreferences("mydata",Context.MODE_PRIVATE);
+       // SharedPreferences shared2 = getSharedPreferences("mydata",Context.MODE_PRIVATE);
         if(shared.getBoolean("ducks",false)){
             toggle_ducks = true;
             MyService.ducks_sent = false;
@@ -320,7 +346,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 
         if (on_teams.size() >= 1) {
-            Log.i("", "Sent");
+            //Log.i("", "Sent");
             Intent intent2 = new Intent(this, MyService.class);
             startService(intent2);
         }
@@ -333,15 +359,33 @@ public class MainActivity extends Activity implements View.OnClickListener{
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+        if(id == R.id.instructions){
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                    MainActivity.this);
+            alertDialogBuilder.setTitle("Welcome to Last Minute Sports");
+            alertDialogBuilder.setMessage("Tap on your favourite teams to get warnings when 5 minutes are left in the game. Make sure to keep the app running in the background when you want to receive Alerts");
+            alertDialogBuilder.setPositiveButton("OK", null);
+            alertDialogBuilder.show();
+            return true;
+        }
+        return true;
+    }
+
 
     @Override
     public void onClick(View v) {
-        SharedPreferences shared = getSharedPreferences("mydata", Context.MODE_PRIVATE );
+        SharedPreferences shared = getSharedPreferences("mydata", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = shared.edit();
         if (on_teams.size() == 0) {
             Intent intent = new Intent(this, MyService.class);
             startService(intent);
         }
+
         if (v == ducks) {
             if (toggle_ducks){
                 turnOnTeam(R.drawable.ducks_fade, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
@@ -777,80 +821,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         {
             team.setImageResource(teamOn);
             on_teams.add(teamName);
-        }
-
-    }
-
-
-
-
-
-
-
-    private void turnOnWings( ) {
-        if(toggle_wings) {
-            wings.setImageResource(R.drawable.off_redwings);
-            toggle_wings = false;
-            on_teams.remove("Detroit");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
+            if (teamName.contains("%20"))
+            {
+                teamName = teamName.replace("%20"," ");
             }
-        }else
-        {
-            wings.setImageResource(R.drawable.off_redwings);
-            toggle_wings = true;
-            on_teams.add("Detroit");
-        }
-
-    }
-    private void turnOnOilers( ) {
-        if(toggle_oilers) {
-            oilers.setImageResource(R.drawable.off_oilers);
-            toggle_oilers = false;
-            on_teams.remove("Edmonton");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            oilers.setImageResource(R.drawable.on_oilers);
-            toggle_oilers = true;
-            on_teams.add("Edmonton");
-        }
-
-    }
-    private void turnOnpanthers( ) {
-        if(toggle_panthers) {
-            panthers.setImageResource(R.drawable.off_panthers);
-            toggle_panthers = false;
-            on_teams.remove("Florida");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            panthers.setImageResource(R.drawable.on_panthers);
-            toggle_panthers = true;
-            on_teams.add("Florida");
-        }
-    }
-    private void turnOnKings( ) {
-        if(toggle_kings) {
-            kings.setImageResource(R.drawable.off_kings);
-            toggle_kings = false;
-            on_teams.remove("Los%20Angeles");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            kings.setImageResource(R.drawable.on_kings);
-            toggle_kings = true;
-            on_teams.add("Los%20Angeles");
+            Toast.makeText(this, "Sending Notification Alerts for " + teamName, Toast.LENGTH_LONG).show();
         }
 
     }
@@ -863,201 +838,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
 
 
-
-    private void turnOnStars( ) {
-        if(toggle_stars) {
-            stars.setImageResource(R.drawable.off_stars);
-            toggle_stars = false;
-            on_teams.remove("Dallas");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            stars.setImageResource(R.drawable.on_stars);
-            toggle_stars = true;
-            on_teams.add("Dallas");
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-    private void turnOnHawks( ) {
-        if(toggle_hawks) {
-            hawks.setImageResource(R.drawable.off_hawks);
-            toggle_hawks = false;
-            on_teams.remove("Chicago");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            hawks.setImageResource(R.drawable.on_hawks);
-            toggle_hawks = true;
-            on_teams.add("Chicago");
-        }
-
-    }
-
-
-    private void turnOnAvalanche( ) {
-        if(toggle_avalanche) {
-            avalanche.setImageResource(R.drawable.off_avs);
-            toggle_avalanche = false;
-            on_teams.remove("Colorado");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            avalanche.setImageResource(R.drawable.on_avs);
-            toggle_avalanche = true;
-            on_teams.add("Colorado");
-        }
-
-    }
-
-
-
-    private void turnOnJackets( ) {
-        if(toggle_jackets) {
-            jackets.setImageResource(R.drawable.off_bluejackets);
-            toggle_jackets = false;
-            on_teams.remove("Columbus");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            jackets.setImageResource(R.drawable.on_bluejackets);
-            toggle_jackets = true;
-            on_teams.add("Columbus");
-        }
-
-    }
-
-
-
-
-
-
-
-    private void turnOnHurricanes( ) {
-        if(toggle_hurricanes) {
-            hurricanes.setImageResource(R.drawable.hurricanes_faded);
-            toggle_hurricanes = false;
-            on_teams.remove("Carolina");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            hurricanes.setImageResource(R.drawable.on_hurricanes);
-            toggle_hurricanes = true;
-            on_teams.add("Carolina");
-        }
-
-    }
-
-    private void turnOnFlames () {
-        if(toggle_flames) {
-            flames.setImageResource(R.drawable.flames_copy);
-            toggle_flames = false;
-            on_teams.remove("Calgary");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-
-        }
-        else {
-            flames.setImageResource(R.drawable.on_flames);
-            toggle_flames = true;
-            Log.i("j ", "flames");
-            Toast.makeText(this, "Notification Set for Flames", Toast.LENGTH_LONG).show();
-            on_teams.add("Calgary");
-
-        }
-    }
-
-
-    private void turnOnSabres() {
-        if(toggle_sabres) {
-            sabres.setImageResource(R.drawable.sabres_faded);
-            toggle_sabres = false;
-            on_teams.remove("Tampa%20Bay");
-            MyService.lightning_sent = false;
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else{
-            sabres.setImageResource(R.drawable.on_sabres);
-            toggle_sabres = true;
-            on_teams.add("Tampa%20Bay");
-        }
-    }
-
-    private void turnOnBruins() {
-        if (toggle_bruins) {
-            toggle_bruins = false;
-            bruins.setImageResource(R.drawable.boston_faded);
-            on_teams.remove("Boston");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        } else {
-            bruins.setImageResource(R.drawable.on_boston);
-            toggle_bruins = true;
-            on_teams.add("Boston");
-        }
-    }
-    private void turnOnCoyotes() {
-        if (toggle_coyotes) {
-            coyotes.setImageResource(R.drawable.faded_coyotes);
-            toggle_coyotes = false;
-            on_teams.remove("NY%20Rangers");
-            MyService.rangers_sent = false;
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        } else {
-            coyotes.setImageResource(R.drawable.on_coyotes);
-            toggle_coyotes = true;
-            on_teams.add("NY%20Rangers");
-        }
-    }
-
-    private void turnOnDucks() {
-        if (toggle_ducks){
-            ducks.setImageResource(R.drawable.ducks_fade);
-            toggle_ducks = false;
-            on_teams.remove("Anaheim");
-            if(on_teams.size() == 0) {
-                Intent intent = new Intent(this, MyService.class);
-                stopService(intent);
-            }
-        }else
-        {
-            toggle_ducks = true;
-            ducks.setImageResource(R.drawable.on_ducks);
-            on_teams.add("Anaheim");
-        }
-    }
 
 
 
