@@ -1,6 +1,8 @@
 package project.dharssan.lastminutesports;
 import android.app.PendingIntent;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
@@ -92,6 +94,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
         ducks = (ImageButton) findViewById(R.id.ducks);
         coyotes = (ImageButton) findViewById(R.id.coyotes);
         bruins = (ImageButton) findViewById(R.id.bruins);
@@ -155,6 +160,170 @@ public class MainActivity extends Activity implements View.OnClickListener{
         jets.setOnClickListener(this);
         capitals.setOnClickListener(this);
 
+        SharedPreferences shared = getSharedPreferences("mydata",Context.MODE_PRIVATE);
+        if(shared.getBoolean("ducks",false)){
+            toggle_ducks = true;
+            MyService.ducks_sent = false;
+            on_teams.add("Anaheim");
+            ducks.setImageResource(R.drawable.on_ducks);
+        } if(shared.getBoolean("coyotes",false)){
+            toggle_coyotes = true;
+            MyService.coyotes_sent = false;
+            on_teams.add("Arizona");
+            coyotes.setImageResource(R.drawable.on_coyotes);
+        }if(shared.getBoolean("bruins",false)){
+            toggle_bruins = true;
+            MyService.bruins_sent = false;
+            on_teams.add("Boston");
+            bruins.setImageResource(R.drawable.on_boston);
+        }if(shared.getBoolean("sabres",false)){
+            toggle_sabres = true;
+            MyService.sabres_sent = false;
+            on_teams.add("Buffalo");
+            sabres.setImageResource(R.drawable.on_sabres);
+        }if(shared.getBoolean("flames",false)){
+            toggle_flames = true;
+            MyService.flames_sent = false;
+            on_teams.add("Calgary");
+            flames.setImageResource(R.drawable.on_flames);
+        }if(shared.getBoolean("hurricanes",false)){
+            toggle_hurricanes = true;
+            MyService.hurricanes_sent = false;
+            on_teams.add("Anaheim");
+            hurricanes.setImageResource(R.drawable.on_hurricanes);
+        }if(shared.getBoolean("hawks",false)){
+            toggle_hawks = true;
+            MyService.hawks_sent = false;
+            on_teams.add("Chicago");
+            hawks.setImageResource(R.drawable.on_hawks);
+        }if(shared.getBoolean("avalanche",false)){
+            toggle_avalanche = true;
+            MyService.avs_sent = false;
+            on_teams.add("Colorado");
+            avalanche.setImageResource(R.drawable.on_avs);
+        }if(shared.getBoolean("jackets",false)){
+            toggle_jackets = true;
+            MyService.jackets_sent = false;
+            on_teams.add("Columbus");
+            jackets.setImageResource(R.drawable.on_bluejackets);
+        }if(shared.getBoolean("stars",false)){
+            toggle_stars = true;
+            MyService.stars_sent = false;
+            on_teams.add("Dallas");
+            stars.setImageResource(R.drawable.on_stars);
+        }if(shared.getBoolean("wings",false)){
+            toggle_wings = true;
+            MyService.wings_sent = false;
+            on_teams.add("Detroit");
+            wings.setImageResource(R.drawable.on_redwings);
+        }if(shared.getBoolean("oilers",false)){
+            toggle_oilers = true;
+            MyService.oilers_sent = false;
+            on_teams.add("Edmonton");
+            oilers.setImageResource(R.drawable.on_oilers);
+        }if(shared.getBoolean("panthers",false)){
+            toggle_panthers = true;
+            MyService.panthers_sent = false;
+            on_teams.add("Florida");
+            panthers.setImageResource(R.drawable.on_panthers);
+        }
+
+        if(shared.getBoolean("kings",false)){
+            toggle_kings = true;
+            MyService.kings_sent = false;
+            on_teams.add("Los%20Angeles");
+            kings.setImageResource(R.drawable.on_kings);
+        }if(shared.getBoolean("wild",false)){
+            toggle_wild = true;
+            MyService.wild_sent = false;
+            on_teams.add("Minnesota");
+            wild.setImageResource(R.drawable.on_wild);
+        }if(shared.getBoolean("habs",false)){
+            toggle_habs = true;
+            MyService.habs_sent = false;
+            on_teams.add("Montreal");
+            habs.setImageResource(R.drawable.on_montreal);
+        }if(shared.getBoolean("predators",false)){
+            toggle_predators = true;
+            MyService.predators_sent = false;
+            on_teams.add("Nashville");
+            predators.setImageResource(R.drawable.on_predators);
+        }if(shared.getBoolean("devils",false)){
+            toggle_devils = true;
+            MyService.devils_sent = false;
+            on_teams.add("New%20Jersey");
+            devils.setImageResource(R.drawable.on_devils);
+        }if(shared.getBoolean("islanders",false)){
+            toggle_islanders = true;
+            MyService.islanders_sent = false;
+            on_teams.add("NY%20Islanders");
+            islanders.setImageResource(R.drawable.on_islanders);
+        }if(shared.getBoolean("rangers",false)){
+            toggle_rangers = true;
+            MyService.rangers_sent = false;
+            on_teams.add("NY%20Rangers");
+            rangers.setImageResource(R.drawable.on_rangers);
+        }if(shared.getBoolean("flyers",false)){
+            toggle_flyers = true;
+            MyService.flyers_sent = false;
+            on_teams.add("Philadelphia");
+            flyers.setImageResource(R.drawable.on_flyers);
+        }if(shared.getBoolean("penguins",false)){
+            toggle_penguins = true;
+            MyService.penguins_sent = false;
+            on_teams.add("Pittsburgh");
+            penguins.setImageResource(R.drawable.on_penguins);
+        }if(shared.getBoolean("senators",false)){
+            toggle_senators = true;
+            MyService.senators_sent = false;
+            on_teams.add("Ottawa");
+            senators.setImageResource(R.drawable.on_senators);
+        }if(shared.getBoolean("sharks",false)){
+            toggle_sharks = true;
+            MyService.sharks_sent = false;
+            on_teams.add("San%20Jose");
+            sharks.setImageResource(R.drawable.on_sharks);
+        }if(shared.getBoolean("blues",false)){
+            toggle_blues = true;
+            MyService.blues_sent = false;
+            on_teams.add("St.%20Louis");
+            blues.setImageResource(R.drawable.on_blues);
+        }if(shared.getBoolean("lightning",false)){
+            toggle_lightning = true;
+            MyService.lightning_sent = false;
+            on_teams.add("Tampa%20Bay");
+            lightning.setImageResource(R.drawable.on_lightning);
+        }if(shared.getBoolean("leafs",false)){
+            toggle_leafs = true;
+            MyService.leafs_sent = false;
+            on_teams.add("Toronto");
+            leafs.setImageResource(R.drawable.on_leafs);
+        }if(shared.getBoolean("canucks",false)){
+            toggle_canucks = true;
+            MyService.canucks_sent = false;
+            on_teams.add("Vancouver");
+            canucks.setImageResource(R.drawable.on_canucks);
+        }if(shared.getBoolean("capitals",false)){
+            toggle_capitals = true;
+            MyService.capitals_sent = false;
+            on_teams.add("Washington");
+            capitals.setImageResource(R.drawable.on_capitals);
+        }if(shared.getBoolean("jets",false)){
+            toggle_jets = true;
+            MyService.jets_sent = false;
+            on_teams.add("Winnipeg");
+            jets.setImageResource(R.drawable.on_jets);
+        }
+
+
+
+
+
+        if (on_teams.size() >= 1) {
+            Log.i("", "Sent");
+            Intent intent2 = new Intent(this, MyService.class);
+            startService(intent2);
+        }
     }
 
     @Override
@@ -167,6 +336,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        SharedPreferences shared = getSharedPreferences("mydata", Context.MODE_PRIVATE );
+        SharedPreferences.Editor editor = shared.edit();
         if (on_teams.size() == 0) {
             Intent intent = new Intent(this, MyService.class);
             startService(intent);
@@ -175,13 +346,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
             if (toggle_ducks){
                 turnOnTeam(R.drawable.ducks_fade, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
                 toggle_ducks = false;
+
                 MyService.ducks_sent = false;
             }
             else {
                 turnOnTeam(R.drawable.ducks_fade, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
                 toggle_ducks = true;
-            }
+                MyService.ducks_sent = false;
 
+            }
+            editor.putBoolean("ducks",toggle_ducks);
         } else if (v == coyotes) {
             if (toggle_coyotes){
                 turnOnTeam(R.drawable.faded_coyotes, R.drawable.on_coyotes, toggle_coyotes, "Arizona", coyotes);
@@ -192,7 +366,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.faded_coyotes, R.drawable.on_coyotes, toggle_coyotes, "Arizona", coyotes);
                 toggle_coyotes = true;
+                MyService.coyotes_sent = false;
+
             }
+            editor.putBoolean("coyotes", toggle_coyotes);
 
         } else if (v == bruins) {
             if (toggle_bruins){
@@ -203,7 +380,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.boston_faded, R.drawable.on_boston, toggle_bruins, "Boston", bruins);
                 toggle_bruins = true;
+                MyService.bruins_sent = false;
+
             }
+            editor.putBoolean("bruins", toggle_bruins);
+
         } else if (v == sabres) {
 
             if (toggle_sabres){
@@ -214,7 +395,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.sabres_faded, R.drawable.on_sabres, toggle_sabres, "Buffalo", sabres);
                 toggle_sabres = true;
+                MyService.sabres_sent = false;
+
             }
+            editor.putBoolean("sabres", toggle_sabres);
+
         } else if (v == flames) {
 
             if (toggle_flames){
@@ -225,7 +410,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.flames_copy, R.drawable.on_flames, toggle_flames, "Calgary", flames);
                 toggle_flames = true;
+                MyService.flames_sent = false;
+
             }
+            editor.putBoolean("flames", toggle_flames);
         } else if (v == hurricanes) {
             if (toggle_hurricanes){
                 turnOnTeam(R.drawable.hurricanes_faded, R.drawable.on_hurricanes, toggle_hurricanes, "Carolina", hurricanes);
@@ -235,7 +423,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.hurricanes_faded, R.drawable.on_hurricanes, toggle_hurricanes, "Carolina", hurricanes);
                 toggle_hurricanes = true;
+                MyService.hurricanes_sent = false;
+
             }
+            editor.putBoolean("hurricanes", toggle_hurricanes);
+
         } else if (v == hawks) {
             if (toggle_hawks){
                 turnOnTeam(R.drawable.off_hawks, R.drawable.on_hawks, toggle_hawks, "Chicago", hawks);
@@ -245,7 +437,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_hawks, R.drawable.on_hawks, toggle_hawks, "Chicago", hawks);
                 toggle_hawks = true;
+                MyService.hawks_sent = false;
+
             }
+            editor.putBoolean("hawks", toggle_hawks);
 
 
         } else if (v == avalanche) {
@@ -257,7 +452,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_avs, R.drawable.on_avs, toggle_avalanche, "Colorado", avalanche);
                 toggle_avalanche = true;
+                MyService.avs_sent = false;
+
             }
+            editor.putBoolean("avalanche", toggle_avalanche);
         } else if (v == jackets) {
             if (toggle_jackets){
                 turnOnTeam(R.drawable.off_bluejackets, R.drawable.on_bluejackets, toggle_jackets, "Columbus", jackets);
@@ -268,8 +466,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_bluejackets, R.drawable.on_bluejackets, toggle_jackets, "Columbus", jackets);
                 toggle_jackets = true;
-            }
+                MyService.jackets_sent = false;
 
+            }
+            editor.putBoolean("jackets", toggle_jackets);
         } else if (v == stars) {
             if (toggle_stars){
                 turnOnTeam(R.drawable.off_stars, R.drawable.on_stars, toggle_stars, "Dallas", stars);
@@ -279,7 +479,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_stars, R.drawable.on_stars, toggle_stars, "Dallas", stars);
                 toggle_stars = true;
+                MyService.stars_sent = false;
+
             }
+            editor.putBoolean("stars", toggle_stars);
 
 
         } else if (v == wings) {
@@ -291,7 +494,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_redwings, R.drawable.on_redwings, toggle_wings, "Detroit", wings);
                 toggle_wings = true;
+                MyService.wings_sent = false;
+
             }
+            editor.putBoolean("wings", toggle_wings);
+
         } else if (v == oilers) {
             if (toggle_oilers){
                 turnOnTeam(R.drawable.off_oilers, R.drawable.on_oilers, toggle_oilers, "Edmonton", oilers);
@@ -301,8 +508,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_oilers, R.drawable.on_oilers, toggle_oilers, "Edmonton", oilers);
                 toggle_oilers = true;
+                MyService.oilers_sent = false;
+
             }
 
+            editor.putBoolean("oilers", toggle_oilers);
 
         } else if (v == panthers) {
             if (toggle_panthers){
@@ -314,7 +524,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_panthers, R.drawable.on_panthers, toggle_panthers, "Florida", panthers);
                 toggle_panthers = true;
+                MyService.panthers_sent = false;
+
             }
+            editor.putBoolean("panthers", toggle_panthers);
 
         } else if (v == kings) {
             if (toggle_kings){
@@ -325,8 +538,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_kings, R.drawable.on_kings, toggle_kings, "Los%20Angeles", kings);
                 toggle_kings = true;
-            }
+                MyService.kings_sent = false;
 
+            }
+            editor.putBoolean("kings", toggle_kings);
         } else if (v == wild){
             if (toggle_wild){
                 turnOnTeam(R.drawable.off_wild, R.drawable.on_wild, toggle_wild, "Minnesota", wild);
@@ -336,8 +551,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             else {
                 turnOnTeam(R.drawable.off_wild, R.drawable.on_wild, toggle_wild, "Minnesota", wild);
                 toggle_wild = true;
+                MyService.wild_sent = false;
 
             }
+            editor.putBoolean("wild", toggle_wild);
+
         }else if (v == habs) {
             if (toggle_habs) {
                 turnOnTeam(R.drawable.off_montreal, R.drawable.on_montreal, toggle_habs, "Montreal", habs);
@@ -346,8 +564,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_montreal, R.drawable.on_montreal, toggle_habs, "Montreal", habs);
                 toggle_habs = true;
+                MyService.habs_sent = false;
 
             }
+            editor.putBoolean("habs", toggle_habs);
+
         }else if (v == predators){
             if (toggle_predators) {
                 turnOnTeam(R.drawable.off_predators, R.drawable.on_predators, toggle_predators, "Nashville", predators);
@@ -357,8 +578,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_predators, R.drawable.on_predators, toggle_predators, "Nashville", predators);
                 toggle_predators = true;
+                MyService.predators_sent = false;
+
 
             }
+            editor.putBoolean("predators", toggle_predators);
 
         }else if (v==devils){
             if (toggle_devils) {
@@ -368,9 +592,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_devils, R.drawable.on_devils, toggle_devils, "New%20Jersey", devils);
                 toggle_devils = true;
+                MyService.devils_sent = false;
+
 
             }
-
+            editor.putBoolean("devils", toggle_devils);
         }else if (v == islanders) {
             if (toggle_islanders) {
                 turnOnTeam(R.drawable.off_islanders, R.drawable.on_islanders, toggle_islanders, "NY%Islanders", islanders);
@@ -380,9 +606,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_islanders, R.drawable.on_islanders, toggle_islanders, "NY%Islanders", islanders);
                 toggle_islanders = true;
+                MyService.islanders_sent = false;
+
 
             }
-
+            editor.putBoolean("islanders", toggle_islanders);
         }else if (v == rangers){
 
             if (toggle_rangers) {
@@ -393,8 +621,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_rangers, R.drawable.on_rangers, toggle_rangers, "NY%Rangers", rangers);
                 toggle_rangers = true;
+                MyService.rangers_sent = false;
+
 
             }
+            editor.putBoolean("rangers", toggle_rangers);
+
         }else if (v == flyers){
             if (toggle_flyers) {
                 turnOnTeam(R.drawable.off_flyers, R.drawable.on_flyers, toggle_flyers, "Philadelphia", flyers);
@@ -403,9 +635,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_flyers, R.drawable.on_flyers, toggle_flyers, "Philadelphia", flyers);
                 toggle_flyers = true;
+                MyService.flyers_sent = false;
+
 
             }
-
+            editor.putBoolean("flyers", toggle_flyers);
         }else if (v == penguins ){
             if (toggle_penguins) {
                 turnOnTeam(R.drawable.off_penguins, R.drawable.on_penguins, toggle_penguins, "Pittsburgh", penguins);
@@ -414,8 +648,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_penguins, R.drawable.on_penguins, toggle_penguins, "Pittsburgh", penguins);
                 toggle_penguins = true;
+                MyService.penguins_sent = false;
+
 
             }
+            editor.putBoolean("penguins", toggle_penguins);
 
         }else if (v == senators){
             if (toggle_senators) {
@@ -426,8 +663,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_senators, R.drawable.on_senators, toggle_senators, "Ottawa", senators);
                 toggle_senators = true;
+                MyService.senators_sent = false;
 
             }
+            editor.putBoolean("senators", toggle_senators);
 
         }else if (v == sharks){
             if (toggle_sharks) {
@@ -438,7 +677,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_sharks, R.drawable.on_sharks, toggle_sharks, "San%20Jose", sharks);
                 toggle_sharks = true;
+                MyService.sharks_sent = false;
+
             }
+            editor.putBoolean("sharks", toggle_sharks);
+
         }else if (v == blues){
             if (toggle_blues) {
                 turnOnTeam(R.drawable.off_blues, R.drawable.on_blues, toggle_blues, "St.%20Blues", blues);
@@ -447,7 +690,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_blues, R.drawable.on_blues, toggle_blues, "St.%20Blues", blues);
                 toggle_blues = true;
+                MyService.blues_sent = false;
+
             }
+            editor.putBoolean("blues", toggle_blues);
 
         }else if (v == lightning){
 
@@ -458,7 +704,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_lightning, R.drawable.on_lightning, toggle_lightning, "Tampa%20Bay", lightning);
                 toggle_lightning = true;
+                MyService.lightning_sent= false;
+
             }
+            editor.putBoolean("lightning", toggle_lightning);
         }else if (v == leafs){
             if (toggle_leafs) {
                 turnOnTeam(R.drawable.off_leafs, R.drawable.on_leafs, toggle_leafs, "Toronto", leafs);
@@ -468,28 +717,33 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_leafs, R.drawable.on_leafs, toggle_leafs, "Toronto", leafs);
                 toggle_leafs = true;
+                MyService.leafs_sent = false;
+
             }
+            editor.putBoolean("leafs", toggle_leafs);
         }else if (v == canucks){
             if (toggle_canucks) {
                 turnOnTeam(R.drawable.off_canucks, R.drawable.on_canucks, toggle_canucks, "Vancouver", canucks);
                 toggle_canucks = false;
-                MyService.canucks_sent = false;
 
             } else {
                 turnOnTeam(R.drawable.off_canucks, R.drawable.on_canucks, toggle_canucks, "Vancouver", canucks);
                 toggle_canucks = true;
             }
+            MyService.canucks_sent = false;
+            editor.putBoolean("canucks", toggle_canucks);
 
         }else if (v == capitals){
             if (toggle_capitals) {
                 turnOnTeam(R.drawable.off_capitals, R.drawable.on_capitals, toggle_capitals, "Washington", capitals);
                 toggle_capitals = false;
-                MyService.capitals_sent = false;
 
             } else {
                 turnOnTeam(R.drawable.off_capitals, R.drawable.on_capitals, toggle_capitals, "Washington", capitals);
                 toggle_capitals = true;
             }
+            MyService.capitals_sent = false;
+            editor.putBoolean("capitals", toggle_capitals);
 
         }else if (v == jets){
             if (toggle_jets) {
@@ -500,9 +754,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
             } else {
                 turnOnTeam(R.drawable.off_jets, R.drawable.on_jets, toggle_jets, "Winnipeg", jets);
                 toggle_jets = true;
+                MyService.jets_sent = false;
             }
+            editor.putBoolean("jets", toggle_jets);
 
         }
+
+        editor.commit();
         //save preferences
     }
 

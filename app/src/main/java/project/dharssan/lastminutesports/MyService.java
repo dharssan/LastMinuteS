@@ -101,7 +101,7 @@ public class MyService extends Service{
     @Override
     public void onCreate(){
         Toast.makeText(this, "My Service Created for Team", Toast.LENGTH_LONG).show();
-        Log.i(TAG, "onCreate");
+        Log.i(TAG, "onCreated");
 
     }
     @Override
@@ -176,7 +176,9 @@ public class MyService extends Service{
                 int hour = Integer.parseInt(dateFormat.format(new Date()));
                 Calendar calendar = Calendar.getInstance();
                 int day = calendar.get(Calendar.DAY_OF_WEEK);
-                if ((((day<=2 && day<=6)&& (hour >= 20 && hour <=24)) || (hour>=0 && hour <=2))
+
+
+                if ((((day>=2 && day<=6)&& (hour >= 20 && hour <=24)) || (hour>=0 && hour <=2))
                 || (day == 7 || day == 1 )&& ((hour >= 14 && hour <=24)) || (hour>=0 && hour <=2))
                 {
 //if statement check time of day M-F @ 7pm to 1am and Saturday and Sunday at 1pm to 1am
