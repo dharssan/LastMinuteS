@@ -503,6 +503,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
 
         }
+        //save preferences
     }
 
 
