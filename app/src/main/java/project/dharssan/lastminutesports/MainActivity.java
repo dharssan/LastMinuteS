@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toggle_bruins = true;
             MyService.bruins_sent = false;
             on_teams.add("Boston");
-            bruins.setImageResource(R.drawable.on_boston);
+            bruins.setImageResource(R.drawable.on_bruins);
         }if(shared.getBoolean("sabres",false)){
             toggle_sabres = true;
             MyService.sabres_sent = false;
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toggle_hurricanes = true;
             MyService.hurricanes_sent = false;
             on_teams.add("Anaheim");
-            hurricanes.setImageResource(R.drawable.on_hurricanes);
+            hurricanes.setImageResource(R.drawable.on_canes);
         }if(shared.getBoolean("hawks",false)){
             toggle_hawks = true;
             MyService.hawks_sent = false;
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toggle_jackets = true;
             MyService.jackets_sent = false;
             on_teams.add("Columbus");
-            jackets.setImageResource(R.drawable.on_bluejackets);
+            jackets.setImageResource(R.drawable.on_jackets);
         }if(shared.getBoolean("stars",false)){
             toggle_stars = true;
             MyService.stars_sent = false;
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toggle_wings = true;
             MyService.wings_sent = false;
             on_teams.add("Detroit");
-            wings.setImageResource(R.drawable.on_redwings);
+            wings.setImageResource(R.drawable.on_wings);
         }if(shared.getBoolean("oilers",false)){
             toggle_oilers = true;
             MyService.oilers_sent = false;
@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             toggle_habs = true;
             MyService.habs_sent = false;
             on_teams.add("Montreal");
-            habs.setImageResource(R.drawable.on_montreal);
+            habs.setImageResource(R.drawable.on_habs);
         }if(shared.getBoolean("predators",false)){
             toggle_predators = true;
             MyService.predators_sent = false;
@@ -388,13 +388,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (v == ducks) {
             if (toggle_ducks){
-                turnOnTeam(R.drawable.ducks_fade, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
+                turnOnTeam(R.drawable.off_ducks, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
                 toggle_ducks = false;
 
                 MyService.ducks_sent = false;
             }
             else {
-                turnOnTeam(R.drawable.ducks_fade, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
+                turnOnTeam(R.drawable.off_ducks, R.drawable.on_ducks, toggle_ducks, "Anaheim", ducks);
                 toggle_ducks = true;
                 MyService.ducks_sent = false;
 
@@ -402,13 +402,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putBoolean("ducks",toggle_ducks);
         } else if (v == coyotes) {
             if (toggle_coyotes){
-                turnOnTeam(R.drawable.faded_coyotes, R.drawable.on_coyotes, toggle_coyotes, "Arizona", coyotes);
+                turnOnTeam(R.drawable.off_coyotes, R.drawable.on_coyotes, toggle_coyotes, "Arizona", coyotes);
                 toggle_coyotes = false;
                 MyService.coyotes_sent = false;
 
             }
             else {
-                turnOnTeam(R.drawable.faded_coyotes, R.drawable.on_coyotes, toggle_coyotes, "Arizona", coyotes);
+                turnOnTeam(R.drawable.off_coyotes, R.drawable.on_coyotes, toggle_coyotes, "Arizona", coyotes);
                 toggle_coyotes = true;
                 MyService.coyotes_sent = false;
 
@@ -417,12 +417,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else if (v == bruins) {
             if (toggle_bruins){
-                turnOnTeam(R.drawable.boston_faded, R.drawable.on_boston, toggle_bruins, "Boston", bruins);
+                turnOnTeam(R.drawable.off_bruins, R.drawable.on_bruins, toggle_bruins, "Boston", bruins);
                 toggle_bruins = false;
                 MyService.bruins_sent = false;
             }
             else {
-                turnOnTeam(R.drawable.boston_faded, R.drawable.on_boston, toggle_bruins, "Boston", bruins);
+                turnOnTeam(R.drawable.off_bruins, R.drawable.on_bruins, toggle_bruins, "Boston", bruins);
                 toggle_bruins = true;
                 MyService.bruins_sent = false;
 
@@ -432,12 +432,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == sabres) {
 
             if (toggle_sabres){
-                turnOnTeam(R.drawable.sabres_faded, R.drawable.on_sabres, toggle_sabres, "Buffalo", sabres);
+                turnOnTeam(R.drawable.off_sabres, R.drawable.on_sabres, toggle_sabres, "Buffalo", sabres);
                 toggle_sabres = false;
                 MyService.sabres_sent = false;
             }
             else {
-                turnOnTeam(R.drawable.sabres_faded, R.drawable.on_sabres, toggle_sabres, "Buffalo", sabres);
+                turnOnTeam(R.drawable.off_sabres, R.drawable.on_sabres, toggle_sabres, "Buffalo", sabres);
                 toggle_sabres = true;
                 MyService.sabres_sent = false;
 
@@ -447,12 +447,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v == flames) {
 
             if (toggle_flames){
-                turnOnTeam(R.drawable.flames_copy, R.drawable.on_flames, toggle_flames, "Calgary", flames);
+                turnOnTeam(R.drawable.off_flames, R.drawable.on_flames, toggle_flames, "Calgary", flames);
                 toggle_flames = false;
                 MyService.flames_sent = false;
             }
             else {
-                turnOnTeam(R.drawable.flames_copy, R.drawable.on_flames, toggle_flames, "Calgary", flames);
+                turnOnTeam(R.drawable.off_flames, R.drawable.on_flames, toggle_flames, "Calgary", flames);
                 toggle_flames = true;
                 MyService.flames_sent = false;
 
@@ -460,12 +460,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putBoolean("flames", toggle_flames);
         } else if (v == hurricanes) {
             if (toggle_hurricanes){
-                turnOnTeam(R.drawable.hurricanes_faded, R.drawable.on_hurricanes, toggle_hurricanes, "Carolina", hurricanes);
+                turnOnTeam(R.drawable.off_hurricanes, R.drawable.on_canes, toggle_hurricanes, "Carolina", hurricanes);
                 toggle_hurricanes = false;
                 MyService.hurricanes_sent = false;
             }
             else {
-                turnOnTeam(R.drawable.hurricanes_faded, R.drawable.on_hurricanes, toggle_hurricanes, "Carolina", hurricanes);
+                turnOnTeam(R.drawable.off_hurricanes, R.drawable.on_canes, toggle_hurricanes, "Carolina", hurricanes);
                 toggle_hurricanes = true;
                 MyService.hurricanes_sent = false;
 
@@ -502,13 +502,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putBoolean("avalanche", toggle_avalanche);
         } else if (v == jackets) {
             if (toggle_jackets){
-                turnOnTeam(R.drawable.off_bluejackets, R.drawable.on_bluejackets, toggle_jackets, "Columbus", jackets);
+                turnOnTeam(R.drawable.off_jackets, R.drawable.on_jackets, toggle_jackets, "Columbus", jackets);
                 toggle_jackets = false;
                 MyService.jackets_sent = false;
 
             }
             else {
-                turnOnTeam(R.drawable.off_bluejackets, R.drawable.on_bluejackets, toggle_jackets, "Columbus", jackets);
+                turnOnTeam(R.drawable.off_jackets, R.drawable.on_jackets, toggle_jackets, "Columbus", jackets);
                 toggle_jackets = true;
                 MyService.jackets_sent = false;
 
@@ -531,12 +531,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else if (v == wings) {
             if (toggle_wings){
-                turnOnTeam(R.drawable.off_redwings, R.drawable.on_redwings, toggle_wings, "Detroit", wings);
+                turnOnTeam(R.drawable.off_wings, R.drawable.on_wings, toggle_wings, "Detroit", wings);
                 toggle_wings = false;
                 MyService.wings_sent = false;
             }
             else {
-                turnOnTeam(R.drawable.off_redwings, R.drawable.on_redwings, toggle_wings, "Detroit", wings);
+                turnOnTeam(R.drawable.off_wings, R.drawable.on_wings, toggle_wings, "Detroit", wings);
                 toggle_wings = true;
                 MyService.wings_sent = false;
 
@@ -602,11 +602,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }else if (v == habs) {
             if (toggle_habs) {
-                turnOnTeam(R.drawable.off_montreal, R.drawable.on_montreal, toggle_habs, "Montreal", habs);
+                turnOnTeam(R.drawable.off_habs, R.drawable.on_habs, toggle_habs, "Montreal", habs);
                 toggle_habs = false;
                 MyService.habs_sent = false;
             } else {
-                turnOnTeam(R.drawable.off_montreal, R.drawable.on_montreal, toggle_habs, "Montreal", habs);
+                turnOnTeam(R.drawable.off_habs, R.drawable.on_habs, toggle_habs, "Montreal", habs);
                 toggle_habs = true;
                 MyService.habs_sent = false;
 
@@ -643,12 +643,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putBoolean("devils", toggle_devils);
         }else if (v == islanders) {
             if (toggle_islanders) {
-                turnOnTeam(R.drawable.off_islanders, R.drawable.on_islanders, toggle_islanders, "NY%Islanders", islanders);
+                turnOnTeam(R.drawable.off_islanders, R.drawable.on_islanders, toggle_islanders, "NY%20Islanders", islanders);
                 toggle_islanders = false;
                 MyService.islanders_sent = false;
 
             } else {
-                turnOnTeam(R.drawable.off_islanders, R.drawable.on_islanders, toggle_islanders, "NY%Islanders", islanders);
+                turnOnTeam(R.drawable.off_islanders, R.drawable.on_islanders, toggle_islanders, "NY%20Islanders", islanders);
                 toggle_islanders = true;
                 MyService.islanders_sent = false;
 
@@ -658,12 +658,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if (v == rangers){
 
             if (toggle_rangers) {
-                turnOnTeam(R.drawable.off_rangers, R.drawable.on_rangers, toggle_rangers, "NY%Rangers", rangers);
+                turnOnTeam(R.drawable.off_rangers, R.drawable.on_rangers, toggle_rangers, "NY%20Rangers", rangers);
                 toggle_rangers = false;
                 MyService.rangers_sent = false;
 
             } else {
-                turnOnTeam(R.drawable.off_rangers, R.drawable.on_rangers, toggle_rangers, "NY%Rangers", rangers);
+                turnOnTeam(R.drawable.off_rangers, R.drawable.on_rangers, toggle_rangers, "NY%20Rangers", rangers);
                 toggle_rangers = true;
                 MyService.rangers_sent = false;
 
@@ -728,11 +728,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }else if (v == blues){
             if (toggle_blues) {
-                turnOnTeam(R.drawable.off_blues, R.drawable.on_blues, toggle_blues, "St.%20Blues", blues);
+                turnOnTeam(R.drawable.off_blues, R.drawable.on_blues, toggle_blues, "St.%20Louis", blues);
                 toggle_blues = false;
                 MyService.blues_sent = false;
             } else {
-                turnOnTeam(R.drawable.off_blues, R.drawable.on_blues, toggle_blues, "St.%20Blues", blues);
+                turnOnTeam(R.drawable.off_blues, R.drawable.on_blues, toggle_blues, "St.%20Louis", blues);
                 toggle_blues = true;
                 MyService.blues_sent = false;
 
@@ -825,7 +825,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             {
                 teamName = teamName.replace("%20"," ");
             }
-            Toast.makeText(this, "Sending Notification Alerts for " + teamName, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Sending Notification Alerts for " + teamName, Toast.LENGTH_SHORT).show();
         }
 
     }

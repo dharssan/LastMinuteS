@@ -6,7 +6,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+    android:fillViewport="false">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/coyotes"
-        android:src="@drawable/faded_coyotes"
+        android:src="@drawable/off_coyotes"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -28,10 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ducks"
-        android:src="@drawable/ducks_fade"
-        android:layout_alignTop="@+id/coyotes"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:src="@drawable/off_ducks"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/coyotes"
+        android:layout_toStartOf="@+id/coyotes" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:layout_alignTop="@+id/coyotes"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/boston_faded" />
+        android:src="@drawable/off_bruins" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -50,14 +50,14 @@
         android:layout_toStartOf="@+id/coyotes"
         android:layout_alignRight="@+id/ducks"
         android:layout_alignEnd="@+id/ducks"
-        android:src="@drawable/sabres_faded"
+        android:src="@drawable/off_sabres"
         android:contentDescription="sabres" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/flames"
-        android:src="@drawable/flames_copy"
+        android:src="@drawable/off_flames"
         android:layout_below="@+id/coyotes"
         android:layout_alignLeft="@+id/coyotes"
         android:layout_alignStart="@+id/coyotes" />
@@ -69,7 +69,8 @@
         android:layout_alignBottom="@+id/flames"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/hurricanes_faded" />
+        android:src="@drawable/off_hurricanes"
+       />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -92,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/bluejackets"
-        android:src="@drawable/off_bluejackets"
+        android:src="@drawable/off_jackets"
         android:layout_alignTop="@+id/avs"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -101,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/redwings"
-        android:src="@drawable/off_redwings"
+        android:src="@drawable/off_wings"
         android:layout_below="@+id/avs"
         android:layout_alignLeft="@+id/kings"
         android:layout_alignStart="@+id/kings" />
@@ -137,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/montreal"
-        android:src="@drawable/off_montreal"
+        android:src="@drawable/off_habs"
         android:layout_below="@+id/panthers"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

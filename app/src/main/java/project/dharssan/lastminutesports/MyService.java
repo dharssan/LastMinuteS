@@ -200,13 +200,15 @@ public class MyService extends Service{
                         Elements description = document
                                 .select("body");
                         desc = description.text();
-                        //Log.i(TAG, "test2");
                         //Log.i(desc, "Test");
                         //Log.i(String.valueOf(stoppage),"test2");
 
                         for (int j = 0; j < MainActivity.on_teams.size(); j++) {
-                            if (desc.matches(".*" + MainActivity.on_teams.get(j) + ".*?\\(6:.*3RD\\).*")) {
-                               // Log.i(TAG, " 1st Match");
+                            Log.i(TAG, "test2");
+
+                            if (desc.matches(".*" + MainActivity.on_teams.get(j) + ".*?\\(6:.*3RD\\).*")
+                                    || desc.matches(".*" + MainActivity.on_teams.get(j) + ".*?\\(5:.*3RD\\).*")) {
+                               Log.i(TAG, " 1st Match");
 
 
                                 final Intent emptyIntent = new Intent();
@@ -216,6 +218,7 @@ public class MyService extends Service{
                                     rangers_sent = true;
                                 } else if (MainActivity.on_teams.get(j) == "Tampa%20Bay" && (!(lightning_sent))) {
                                     buildNotif(MainActivity.on_teams.get(j), 1668);
+                                    Log.i(TAG, " notif Match");
                                     lightning_sent = true;
                                 } else if (MainActivity.on_teams.get(j) == "Anaheim" && (!(ducks_sent))) {
                                     buildNotif(MainActivity.on_teams.get(j), 1669);

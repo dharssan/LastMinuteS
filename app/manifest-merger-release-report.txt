@@ -1,0 +1,115 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	package
+		ADDED from AndroidManifest.xml:3:5
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:versionName
+		ADDED from AndroidManifest.xml:2:94
+	android:versionCode
+		ADDED from AndroidManifest.xml:2:70
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+compatible-screens
+ADDED from AndroidManifest.xml:4:5
+screen#small+ldpi
+ADDED from AndroidManifest.xml:6:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:6:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:6:44
+screen#small+mdpi
+ADDED from AndroidManifest.xml:7:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:7:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:7:44
+screen#small+hdpi
+ADDED from AndroidManifest.xml:8:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:8:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:8:44
+screen#small+xhdpi
+ADDED from AndroidManifest.xml:9:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:9:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:9:44
+screen#normal+ldpi
+ADDED from AndroidManifest.xml:11:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:11:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:11:45
+screen#normal+mdpi
+ADDED from AndroidManifest.xml:12:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:12:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:12:45
+screen#normal+hdpi
+ADDED from AndroidManifest.xml:13:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:13:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:13:45
+screen#normal+xhdpi
+ADDED from AndroidManifest.xml:14:9
+	android:screenSize
+		ADDED from AndroidManifest.xml:14:17
+	android:screenDensity
+		ADDED from AndroidManifest.xml:14:45
+application
+ADDED from AndroidManifest.xml:16:5
+MERGED from com.android.support:appcompat-v7:22.1.1:22:5
+MERGED from com.android.support:support-v4:22.1.1:22:5
+	android:label
+		ADDED from AndroidManifest.xml:20:5
+	android:allowBackup
+		ADDED from AndroidManifest.xml:17:9
+	android:icon
+		ADDED from AndroidManifest.xml:18:9
+	android:theme
+		ADDED from AndroidManifest.xml:21:9
+activity#project.dharssan.lastminutesports.MainActivity
+ADDED from AndroidManifest.xml:22:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:24:46
+	android:label
+		ADDED from AndroidManifest.xml:24:13
+	android:name
+		ADDED from AndroidManifest.xml:23:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:25:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:26:17
+	android:name
+		ADDED from AndroidManifest.xml:26:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:28:17
+	android:name
+		ADDED from AndroidManifest.xml:28:27
+service#project.dharssan.lastminutesports.MyService
+ADDED from AndroidManifest.xml:31:9
+	android:enabled
+		ADDED from AndroidManifest.xml:31:18
+	android:name
+		ADDED from AndroidManifest.xml:31:41
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:35:5
+	android:name
+		ADDED from AndroidManifest.xml:35:22
+uses-sdk
+INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
+MERGED from com.android.support:appcompat-v7:22.1.1:20:5
+MERGED from com.android.support:support-v4:22.1.1:20:5
+	android:targetSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
